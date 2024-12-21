@@ -6,8 +6,8 @@ export default function Banner() {
         src="/banner.png"
         alt="sound bar advertisement"
       />
-      <article className="absolute left-40 top-3/4">
-        <button className="bg-green-500 px-10 py-5 text-white transition-all duration-200 hover:bg-green-600 hover:underline">
+      <article className="absolute left-10 top-3/4 h-full w-full md:top-3/4">
+        <button className="bg-green-500 px-2 py-1 text-white transition-all duration-200 hover:bg-green-600 hover:underline">
           Shop Now
         </button>
       </article>

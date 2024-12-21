@@ -9,7 +9,7 @@ function FooterItem({ children }) {
 }
 export default function Footer() {
   return (
-    <main className="grid grid-cols-5 bg-slate-950 px-10 py-8">
+    <main className="grid-col-2 grid gap-5 bg-slate-950 px-10 py-8 md:grid-cols-5">
       {/* brand section */}
       <FooterColumn>
         <FooterItem>
@@ -30,13 +30,15 @@ export default function Footer() {
           {/* add email logo also in the input */}
         </FooterItem>
       </FooterColumn>
-
+      <hr className="h-0.5 md:hidden" />
       {/* support FooterColumn */}
       <FooterColumn>
         <FooterItem>1st block, Shibuya</FooterItem>
         <FooterItem>kaimono@kapil.com</FooterItem>
         <FooterItem>+1 234 567 890</FooterItem>
       </FooterColumn>
+
+      <hr className="h-0.5 md:hidden" />
 
       {/* account FooterColumn */}
       <FooterColumn>
@@ -46,6 +48,8 @@ export default function Footer() {
         <FooterItem>Wishlist</FooterItem>
         <FooterItem>Shop</FooterItem>
       </FooterColumn>
+
+      <hr className="h-0.5 md:hidden" />
       {/* Legal FooterColumn */}
       <FooterColumn>
         <FooterItem>Privacy Policy</FooterItem>
@@ -53,6 +57,8 @@ export default function Footer() {
         <FooterItem>FAQ</FooterItem>
         <FooterItem>Contact</FooterItem>
       </FooterColumn>
+
+      <hr className="h-0.5 md:hidden" />
       {/* Download app FooterColumn */}
       <FooterColumn className="flex flex-col gap-y-3">
         <FooterItem>Download App</FooterItem>

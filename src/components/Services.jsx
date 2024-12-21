@@ -15,7 +15,7 @@ function Service({ children, Icon, heading, subHeading }) {
 
 export default function Services() {
   return (
-    <section className="mt-10 flex justify-between px-20 py-10">
+    <section className="mt-10 flex justify-between gap-5 py-10 md:gap-0 md:px-20">
       <Service
         Icon={Truck}
         heading="Free and fast delivery"

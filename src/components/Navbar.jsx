@@ -9,7 +9,7 @@ export default function Navbar() {
       <section className="flex w-full items-center justify-between">
         <img src="/brand.png" className="h-7 object-contain" />
 
-        <section className="flex items-center justify-between gap-5">
+        <section className="hidden items-center justify-between gap-5 md:flex">
           <ul className="flex flex-col gap-5 md:flex-row">
             <li>
               <NavLink to="/">Home</NavLink>

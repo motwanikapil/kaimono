@@ -1,8 +1,9 @@
-export default function Button({ children, onClick }) {
+export default function Button({ children, onClick, type = "button" }) {
   return (
     <button
       className="mt-5 rounded-md bg-blue-500 px-5 py-2.5 text-white transition-all duration-200 hover:bg-blue-600 hover:underline"
       onClick={onClick}
+      type={type}
     >
       {children}
     </button>

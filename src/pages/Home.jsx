@@ -7,6 +7,7 @@ import Banner from "../components/Banner";
 import Services from "../components/Services";
 import { ArrowUp } from "lucide-react";
 import { useRef } from "react";
+import Slide from "../components/Slide";
 
 export default function Home() {
   const scrollToTop = useRef(null);
@@ -20,12 +21,24 @@ export default function Home() {
   return (
     <main className="flex flex-col gap-7" ref={scrollToTop}>
       <HomepageCarousel />
-      <FlashSale />
-      <BrowseByCategory />
-      <BestSellingProducts />
-      <Banner />
-      <ExploreOurProducts />
-      <Services />
+      <Slide>
+        <FlashSale />
+      </Slide>
+      <Slide>
+        <BrowseByCategory />
+      </Slide>
+      <Slide>
+        <BestSellingProducts />
+      </Slide>
+      <Slide>
+        <Banner />
+      </Slide>
+      <Slide>
+        <ExploreOurProducts />
+      </Slide>
+      <Slide>
+        <Services />
+      </Slide>
       <button onClick={scrollTop}>
         <ArrowUp />
       </button>
