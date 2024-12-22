@@ -11,7 +11,7 @@ export default function Input({
       <input
         type={type}
         placeholder={placeholder}
-        className="border-b-2 px-2 py-1.5 outline-none transition-all duration-300 focus:border-gray-500"
+        className="w-full border-b-2 px-2 py-1.5 outline-none transition-all duration-300 focus:border-gray-500"
         {...register(name)}
         autoComplete={autoComplete}
       />

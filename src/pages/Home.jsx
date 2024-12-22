@@ -20,7 +20,9 @@ export default function Home() {
   }
   return (
     <main className="flex flex-col gap-7" ref={scrollToTop}>
-      <HomepageCarousel />
+      <Slide>
+        <HomepageCarousel />
+      </Slide>
       <Slide>
         <FlashSale />
       </Slide>
