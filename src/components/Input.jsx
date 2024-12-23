@@ -5,6 +5,7 @@ export default function Input({
   name,
   errors,
   autoComplete,
+  id,
 }) {
   return (
     <article>
@@ -13,6 +14,7 @@ export default function Input({
         placeholder={placeholder}
         className="w-full border-b-2 px-2 py-1.5 outline-none transition-all duration-300 focus:border-gray-500"
         {...register(name)}
+        id={id ?? ""}
         autoComplete={autoComplete}
       />
       {errors?.message && (

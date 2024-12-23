@@ -14,6 +14,8 @@ import AddressBook from "./components/AddressBook";
 import PaymentOptions from "./components/PaymentOptions";
 import Returns from "./components/Returns";
 import Cancellations from "./components/Cancellations";
+import NotFound from "./pages/NotFound";
+import PaymentDetails from "./pages/PaymentDetails";
 
 export default function App() {
   return (
@@ -28,12 +30,14 @@ export default function App() {
           <Route path="cart" element={<Cart />} />
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="account" element={<Account />}>
-            <Route path="profile" element={<Profile />} />
+            <Route index element={<Profile />} />
             <Route path="addressbook" element={<AddressBook />} />
             <Route path="paymentoptions" element={<PaymentOptions />} />
             <Route path="returns" element={<Returns />} />
             <Route path="cancellations" element={<Cancellations />} />
           </Route>
+          <Route path="cart/checkout" element={<PaymentDetails />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

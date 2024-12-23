@@ -3,7 +3,6 @@ import Input from "../components/Input";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { contactSchema } from "../utils/schemas";
 import Button from "../components/Button";
-import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Slide from "../components/Slide";
 
@@ -15,7 +14,6 @@ function ContactForm() {
   const {
     formState: { errors },
     handleSubmit,
-    reset,
     register,
   } = useForm({
     resolver: yupResolver(contactSchema),

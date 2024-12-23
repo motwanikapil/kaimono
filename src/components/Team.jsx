@@ -44,8 +44,8 @@ export default function Team() {
     <main className="flex flex-col gap-10">
       <h1 className="ms-10 text-2xl font-semibold">Our Team</h1>
       <section className="flex justify-evenly gap-10">
-        {profiles.map(({ src, name, position }) => (
-          <Profile name={name} src={src} position={position} />
+        {profiles.map(({ src, name, position }, index) => (
+          <Profile name={name} src={src} position={position} key={index} />
         ))}
       </section>
     </main>

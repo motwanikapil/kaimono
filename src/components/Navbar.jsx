@@ -14,16 +14,36 @@ export default function Navbar() {
         <section className="hidden items-center justify-between gap-5 md:flex">
           <ul className="flex flex-col gap-5 md:flex-row">
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink
+                className="hover:font-bold hover:underline hover:underline-offset-4"
+                to="/"
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to="about">About</NavLink>
+              <NavLink
+                className="hover:font-bold hover:underline hover:underline-offset-4"
+                to="about"
+              >
+                About
+              </NavLink>
             </li>
             <li>
-              <NavLink to="contact">Contact</NavLink>
+              <NavLink
+                className="hover:font-bold hover:underline hover:underline-offset-4"
+                to="contact"
+              >
+                Contact
+              </NavLink>
             </li>
             <li>
-              <NavLink to="signup">Sign up</NavLink>
+              <NavLink
+                className="hover:font-bold hover:underline hover:underline-offset-4"
+                to="signup"
+              >
+                Sign up
+              </NavLink>
             </li>
           </ul>
 
@@ -31,22 +51,22 @@ export default function Navbar() {
             <input
               type="text"
               placeholder="What are you looking for?"
-              className="w-[110%] border-2 py-3 pr-10 ps-3 outline-none focus:border-gray-500"
+              className="transition-underline w-[110%] border-b-2 py-3 pr-10 ps-3 outline-none duration-300 focus:border-gray-500"
             />
-            <article className="pointer-events-none absolute inset-y-0 right-2 flex items-center pl-3">
+            <article className="pointer-events-none absolute inset-y-0 -right-2 flex items-center pl-3">
               <Search color="#aaa" size="20" />
             </article>
           </section>
 
           <section className="flex items-center justify-between gap-5">
             <NavLink to="wishlist">
-              <Heart className="duration-300 hover:scale-150" />
+              <Heart className="duration-300 hover:scale-125" />
             </NavLink>
             <NavLink to="cart">
-              <ShoppingCartIcon className="duration-300 hover:scale-150" />
+              <ShoppingCartIcon className="duration-300 hover:scale-125" />
             </NavLink>
             <NavLink to="account">
-              <User className="duration-300 hover:scale-150" />
+              <User className="duration-300 hover:scale-125" />
             </NavLink>
           </section>
 

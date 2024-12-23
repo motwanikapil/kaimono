@@ -2,7 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { signupSchema } from "../utils/schemas";
 import Button from "../components/Button";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Input from "../components/Input";
 import Slide from "../components/Slide";
 
@@ -57,9 +57,9 @@ export default function Signup() {
           <Button type="submit">Signup</Button>
           <p>
             Already have an account,
-            <NavLink to="/Login" className="ms-2 text-blue-500">
+            <Link to="/Login" className="ms-2 text-blue-500">
               Login
-            </NavLink>
+            </Link>
           </p>
         </form>
       </main>

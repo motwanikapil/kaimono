@@ -19,7 +19,7 @@ export default function Home() {
     });
   }
   return (
-    <main className="flex flex-col gap-7" ref={scrollToTop}>
+    <main className="flex flex-col gap-10" ref={scrollToTop}>
       <Slide>
         <HomepageCarousel />
       </Slide>
@@ -41,7 +41,10 @@ export default function Home() {
       <Slide>
         <Services />
       </Slide>
-      <button onClick={scrollTop}>
+      <button
+        onClick={scrollTop}
+        className="max-w-fit rounded-full border-2 border-black bg-gray-200 p-2"
+      >
         <ArrowUp />
       </button>
     </main>

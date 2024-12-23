@@ -1,6 +1,6 @@
 import { Heart } from "lucide-react";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Product() {
   const [isLiked, setIsLiked] = useState(false);
@@ -9,7 +9,7 @@ export default function Product() {
   }
   return (
     <li>
-      <NavLink className="flex h-80 w-64 flex-col justify-between rounded-md border-4 border-gray-300 p-3">
+      <Link className="flex h-80 w-64 flex-col justify-between rounded-md border-4 border-gray-300 p-3">
         <section className="relative">
           <img
             src="/gaming-controller.jpg"
@@ -35,7 +35,7 @@ export default function Product() {
           <p>* * * * *</p>
           <p>(86)</p>
         </section>
-      </NavLink>
+      </Link>
     </li>
   );
 }

@@ -3,14 +3,7 @@ import Product from "./Product";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import useScrollRef from "../hooks/useScrollRef";
 import Button from "./Button";
-
-function Arrow({ children, onClick }) {
-  return (
-    <button onClick={onClick} className="rounded-full bg-gray-200 p-2">
-      {children}
-    </button>
-  );
-}
+import Arrow from "./Arrow";
 
 export default function FlashSale() {
   const [productsSaleRef, next, previous] = useScrollRef();
