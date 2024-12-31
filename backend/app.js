@@ -67,4 +67,4 @@ connectDb()
       console.log(`Server listening on http://${DOMAIN}:${PORT}`);
     });
   })
-  .catch((err) => console.log(err));
+  .catch(console.log);

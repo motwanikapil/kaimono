@@ -5,12 +5,12 @@ const { isAdmin } = require("../middlewares/auth.middleware");
 router
   .route("/")
   .get(productController.read)
-  .post(isAdmin, productController.create)
-  .put(isAdmin, productController.update);
+  .post(isAdmin, productController.create);
 
 router
   .route("/:id")
   .get(productController.readOne)
-  .delete(isAdmin, productController.remove);
+  .delete(isAdmin, productController.remove)
+  .put(isAdmin, productController.update);
 
 module.exports = router;

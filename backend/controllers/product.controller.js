@@ -49,11 +49,8 @@ async function readOne(req, res) {
 
 async function update(req, res) {
   try {
-    const { _id, ...updatedFields } = req.body;
-    const product = await Product.findOneAndUpdate(
-      { _id },
-      { $set: updatedFields },
-    );
+    const { id: _id } = req.params;
+    const product = await Product.findOneAndUpdate({ _id }, { $set: req.body });
 
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
@@ -67,14 +64,14 @@ async function update(req, res) {
 
 async function remove(req, res) {
   try {
-    const { _id } = req.params;
-    const product = await Product.findOneAndDelete({ _id });
+    const { id } = req.params;
+    const product = await Product.findOneAndDelete({ _id: id });
 
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
 
-    res.status(200).json({ products });
+    res.status(200).json({ message: "Product Deleted Successfully" });
   } catch (error) {
     console.error(error);
   }

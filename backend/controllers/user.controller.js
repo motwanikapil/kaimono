@@ -21,88 +21,6 @@ async function signup(req, res) {
   }
 }
 
-// async function login(req, res) {
-//   try {
-//     const { email, password } = req.body;
-//     if (!email || !password) {
-//       return res.status(404).json({ message: "invalid credentials" });
-//     }
-
-//     let user = await User.findOne({ email });
-
-//     if (!user) return res.status(400).json({ message: "User does not exists" });
-
-//     const userAuthenticated = await user.comparePassword(password);
-
-//     if (!userAuthenticated)
-//       return res.status(400).json({ message: "Invalid credentials" });
-
-//     console.log(req.session);
-
-//     if (
-//       req.session.currentUser &&
-//       req.session.currentUser._id.toString() === user._id.toString()
-//     ) {
-//       return res.status(400).json({ message: "Already logged in" });
-//     }
-
-//     req.session.currentUser = {
-//       role: user.role,
-//       _id: user._id,
-//     };
-
-//     res.status(200).json({
-//       message: "login successful",
-//       userId: user._id.toString(),
-//     });
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
-// async function login(req, res) {
-//   try {
-//     const { email, password } = req.body;
-
-//     if (!email || !password) {
-//       return res
-//         .status(400)
-//         .json({ success: false, message: "Email and password are required." });
-//     }
-
-//     const user = await User.findOne({ email });
-//     if (!user) {
-//       return res
-//         .status(404)
-//         .json({ success: false, message: "User does not exist." });
-//     }
-
-//     const isPasswordValid = await user.comparePassword(password);
-//     if (!isPasswordValid) {
-//       return res
-//         .status(401)
-//         .json({ success: false, message: "Invalid credentials." });
-//     }
-
-//     // Set new session
-//     req.session.currentUser = {
-//       userId: user._id.toString(),
-//       role: user.role,
-//     };
-
-//     res.status(200).json({
-//       success: true,
-//       message: "Login successful.",
-//       user: { userId: user._id.toString(), role: user.role },
-//     });
-//   } catch (error) {
-//     console.error("Login error:", error);
-//     return res.status(500).json({
-//       success: false,
-//       message: "Internal server error.",
-//     });
-//   }
-// }
 
 async function login(req, res) {
   try {
@@ -150,12 +68,12 @@ async function login(req, res) {
 }
 
 async function logout(req, res) {
-  console.log(req.session);
   if (!req.session.currentUser) {
     return res.status(400).json({ message: "User is not logged in" });
+  } else {
+    req.session.currentUser = null;
+    req.session.save(console.error);
   }
-
-  req.session.currentUser = null;
 
   res.status(200).json({ message: "User logged out successfully" });
 }

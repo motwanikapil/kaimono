@@ -26,7 +26,7 @@ async function read(req, res) {
 
 async function update(req, res) {
   try {
-    const { categoryId } = req.params;
+    const { id: categoryId } = req.params;
     if (!categoryId) {
       return res.status(400).json({ message: "Valid category id required" });
     }
@@ -44,7 +44,7 @@ async function update(req, res) {
 
 async function remove(req, res) {
   try {
-    const { categoryId } = req.body;
+    const { id: categoryId } = req.params;
     if (!categoryId) {
       return res.status(400).json({ message: "Valid category id required" });
     }

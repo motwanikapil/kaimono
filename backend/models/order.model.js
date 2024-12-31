@@ -5,16 +5,18 @@ const orderSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  product: {
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
+  products: [
+    {
+      id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+      },
+      quantity: {
+        type: Number,
+        min: 1,
+      },
     },
-    quantity: {
-      type: Number,
-      min: 1,
-    },
-  },
+  ],
   shippingStatus: {
     type: String,
     enum: ["NEW", "IN TRANSIT", "DELIVERED"],

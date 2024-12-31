@@ -5,11 +5,11 @@ const SKIP = 0;
 
 async function create(req, res) {
   try {
-    const { user, product, shippingStatus, paymentType } = req.body;
+    const { products, shippingStatus, paymentType } = req.body;
 
     const order = await Order.create({
-      user,
-      product,
+      user: req.session.currentUser.userId,
+      products,
       shippingStatus,
       paymentType,
     });
@@ -29,7 +29,7 @@ async function create(req, res) {
 
 async function readOne(req, res) {
   try {
-    const { _id } = req.params;
+    const { id: _id } = req.params;
 
     if (!_id) {
       return res.status(400).json({
@@ -37,7 +37,10 @@ async function readOne(req, res) {
       });
     }
 
-    const order = await Order.findOne({ _id });
+    const order = await Order.findOne({
+      _id,
+      user: req.session?.currentUser?.userId,
+    });
 
     if (!order) {
       return res.status(404).json({
@@ -58,6 +61,8 @@ async function read(req, res) {
     const orders = await Order.find({})
       .limit(limit ?? LIMIT)
       .skip(skip ?? SKIP);
+
+    res.status(200).json({ message: orders });
   } catch (error) {
     console.error(error);
   }
@@ -72,7 +77,7 @@ async function update(req, res) {
 
 async function remove(req, res) {
   try {
-    const { _id } = req.params;
+    const { id: _id } = req.params;
 
     if (!_id) {
       return res.status(400).json({
@@ -80,7 +85,10 @@ async function remove(req, res) {
       });
     }
 
-    const order = await Order.findOneAndDelete({ _id });
+    const order = await Order.findOneAndDelete({
+      _id,
+      user: req.session?.currentUser?.userId,
+    });
 
     if (!order) {
       return res.status(404).json({
