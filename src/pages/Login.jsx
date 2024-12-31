@@ -2,13 +2,39 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { loginSchema } from "../utils/schemas";
 import Button from "../components/Button";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import Slide from "../components/Slide";
+import { useMutation } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 export default function Login() {
+  const navigate = useNavigate();
+
+  const { mutate, isPending, isError, error } = useMutation({
+    mutationKey: ["signup"],
+    mutationFn: async (data) => {
+      const { email, password, name } = data;
+      return axios.post("/user/login", {
+        email,
+        password,
+        name,
+      });
+    },
+    onSuccess: () => {
+      toast.success("Login Successful");
+      navigate(-1);
+    },
+  });
+
+  if (isError) {
+    console.log(error);
+    toast.error(error.response.data.message);
+  }
+
   function onSubmit(data) {
-    console.log(data);
+    mutate(data);
   }
 
   const {

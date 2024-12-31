@@ -16,6 +16,9 @@ import Returns from "./components/Returns";
 import Cancellations from "./components/Cancellations";
 import NotFound from "./pages/NotFound";
 import PaymentDetails from "./pages/PaymentDetails";
+import axios from "axios";
+
+axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 
 export default function App() {
   return (

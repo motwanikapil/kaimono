@@ -6,8 +6,7 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
-const router = express.Router();
-const mongoose = require("mongoose");
+const cors = require("cors");
 
 const userRoutes = require("./routes/user.routes");
 const cartRoutes = require("./routes/cart.routes");
@@ -27,11 +26,17 @@ const {
   MONGODB_URL,
   COOKIE_NAME,
   IS_PROD,
+  FRONTEND_URL,
 } = process.env;
 
 const store = MongoStore.create({ mongoUrl: MONGODB_URL });
 
 app.use(helmet());
+app.use(
+  cors({
+    origin: FRONTEND_URL,
+  }),
+);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(morgan("dev"));

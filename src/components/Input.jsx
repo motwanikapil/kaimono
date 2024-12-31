@@ -18,7 +18,7 @@ export default function Input({
         autoComplete={autoComplete}
       />
       {errors?.message && (
-        <p className="mt-3 text-red-600">{`${errors.message.slice(0, 1).toUpperCase()}${errors.message.slice(1)}`}</p>
+        <p className="mt-3 text-wrap text-red-600">{`${errors.message.slice(0, 1).toUpperCase()}${errors.message.slice(1)}`}</p>
       )}
     </article>
   );
