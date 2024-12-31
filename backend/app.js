@@ -17,6 +17,7 @@ const productRoutes = require("./routes/product.routes");
 const ratingRoutes = require("./routes/rating.routes");
 const wishlistRoutes = require("./routes/wishlist.routes");
 const errorMiddleware = require("./middlewares/error.middleware");
+const addressRoutes = require("./routes/address.routes");
 
 const {
   PORT,
@@ -57,6 +58,7 @@ app.use("/order", orderRoutes);
 app.use("/product", productRoutes);
 app.use("/rating", ratingRoutes);
 app.use("/wishlist", wishlistRoutes);
+app.use("/address", addressRoutes);
 
 app.use(errorMiddleware);
 

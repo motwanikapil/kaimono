@@ -1,5 +1,8 @@
 const Address = require("../models/address.model");
 
+const LIMIT = 10;
+const SKIP = 0;
+
 async function create(req, res) {
   try {
     const { phone = "", companyName = "", address = "" } = req.body;
@@ -25,6 +28,24 @@ async function readOne(req, res) {
     const { id: userId } = req.params;
 
     const address = await Address.findOne({ user: userId });
+
+    if (!address) {
+      return res.status(404).json({ message: "Address not found" });
+    }
+
+    return res.status(200).json({ message: address });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function read(req, res) {
+  try {
+    const { limit, skip } = req.query;
+
+    const address = await Address.find({})
+      .limit(limit ?? LIMIT)
+      .skip(skip ?? SKIP);
 
     if (!address) {
       return res.status(404).json({ message: "Address not found" });
@@ -76,4 +97,5 @@ module.exports = {
   readOne,
   update,
   remove,
+  read,
 };

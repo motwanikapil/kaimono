@@ -30,6 +30,10 @@ const userSchema = new mongoose.Schema({
     required: true,
     default: "user",
   },
+  profilePic: {
+    type: String,
+    default: "",
+  },
   address: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Address",

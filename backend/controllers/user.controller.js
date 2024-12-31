@@ -1,5 +1,8 @@
 const User = require("../models/user.model");
 
+const LIMIT = 10;
+const SKIP = 0;
+
 async function signup(req, res) {
   try {
     const { name, email, password } = req.body;
@@ -21,6 +24,21 @@ async function signup(req, res) {
   }
 }
 
+async function read(req, res) {
+  try {
+    const { limit, skip } = req.query;
+
+    const users = await User.find({})
+      .limit(limit ?? LIMIT)
+      .skip(skip ?? SKIP);
+
+    if (!users) {
+      return res.status(404).json({ message: "users not found" });
+    }
+
+    res.status(200).json({ message: users });
+  } catch (error) {}
+}
 
 async function login(req, res) {
   try {
@@ -80,16 +98,17 @@ async function logout(req, res) {
 
 async function update(req, res) {
   try {
-    const { name, email, password } = req.body;
-    if (!email || !password) {
-      return res.status(404).json({ message: "invalid credentials" });
+    const { id: _id } = req.params;
+    const { name, email, password, address } = req.body;
+    if (!email && !password && !name && !address) {
+      return res.status(404).json({ message: "invalid details" });
     }
 
-    let user = await User.findOneAndUpdate({ email }, { $set: req.body });
+    let user = await User.findOneAndUpdate({ _id }, { $set: req.body });
 
     if (!user) return res.status(400).json({ message: "User does not exists" });
 
-    res.status(200).json({ message: "Logged in successfully" });
+    res.status(200).json({ message: "user updated successfully" });
   } catch (error) {
     console.error(error);
   }
@@ -118,4 +137,5 @@ module.exports = {
   update,
   remove,
   logout,
+  read,
 };
