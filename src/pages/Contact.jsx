@@ -5,10 +5,20 @@ import { contactSchema } from "../utils/schemas";
 import Button from "../components/Button";
 import { useForm } from "react-hook-form";
 import Slide from "../components/Slide";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 function ContactForm() {
-  function onSubmit(data) {
-    console.log(data);
+  async function onSubmit(data) {
+    try {
+      const res = await axios.post("/contactus", data);
+      if (res && res.data) {
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      const err = error?.response?.data?.message;
+      toast.error(err);
+    }
   }
 
   const {

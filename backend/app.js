@@ -15,6 +15,7 @@ const orderRoutes = require("./routes/order.routes");
 const productRoutes = require("./routes/product.routes");
 const ratingRoutes = require("./routes/rating.routes");
 const wishlistRoutes = require("./routes/wishlist.routes");
+const contactUsRoutes = require("./routes/contactus.routes");
 const errorMiddleware = require("./middlewares/error.middleware");
 const addressRoutes = require("./routes/address.routes");
 
@@ -64,6 +65,7 @@ app.use("/product", productRoutes);
 app.use("/rating", ratingRoutes);
 app.use("/wishlist", wishlistRoutes);
 app.use("/address", addressRoutes);
+app.use("/contactus", contactUsRoutes);
 
 app.use(errorMiddleware);
 

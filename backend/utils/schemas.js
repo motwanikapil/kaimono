@@ -65,9 +65,26 @@ const orderSchema = z.object({
   paymentType: paymentTypeSchema,
 });
 
+const phoneRegex = new RegExp(
+  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/,
+);
+
+const contactUsSchema = z.object({
+  name: z.string({ required_error: "name is required" }).trim().min(5),
+  email: z
+    .string({ required_error: "Email is required" })
+    .trim()
+    .email({ message: "Invalid email address" })
+    .min(3, { message: "Email must be more than 3 characters" })
+    .max(255, { message: "Email must not be more than 255 characters" }),
+  phone: z.string().regex(phoneRegex, "Invalid Number!"),
+  message: z.string({ required_error: "message is required" }).trim().min(5),
+});
+
 module.exports = {
   signupSchema,
   loginSchema,
   productSchema,
   orderSchema,
+  contactUsSchema,
 };
