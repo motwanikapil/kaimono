@@ -37,7 +37,7 @@ export default function BestSellingProducts() {
         <Product />
       </ul>
       <section className="text-center">
-        <Button>View All Products</Button>
+        <Button to="/allproducts">View All Products</Button>
       </section>
     </main>
   );

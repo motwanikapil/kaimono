@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { couponSchema } from "../utils/schemas";
 import { ArrowRight } from "lucide-react";
+import { useSelector } from "react-redux";
 
 const products = [
   {
@@ -96,6 +97,10 @@ export default function Cart() {
   } = useForm({
     resolver: yupResolver(couponSchema),
   });
+
+  const { cart } = useSelector((state) => state.cart);
+
+  console.log(cart);
 
   return (
     <main className="w-full text-center">

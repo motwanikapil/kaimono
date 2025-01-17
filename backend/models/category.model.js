@@ -8,6 +8,11 @@ const categorySchema = new mongoose.Schema({
     minLength: 1,
     unique: true,
   },
+  icon: {
+    type: String,
+    trim: true,
+    minLength: 1,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

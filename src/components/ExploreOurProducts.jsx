@@ -35,7 +35,7 @@ export default function FlashSale() {
         <Product />
       </ul>
       <section className="text-center">
-        <Button>View All Products</Button>
+        <Button to="/allproducts">View All Products</Button>
       </section>
     </main>
   );

@@ -27,14 +27,18 @@ async function read(req, res) {
 async function update(req, res) {
   try {
     const { id: categoryId } = req.params;
+
     if (!categoryId) {
       return res.status(400).json({ message: "Valid category id required" });
     }
 
-    const res = await Category.findOneAndUpdate(
+    const resp = await Category.findOneAndUpdate(
       { _id: categoryId },
       { $set: req.body },
     );
+
+    if (!resp)
+      return res.status(400).json({ message: "Category updation failed" });
 
     res.status(200).json({ message: "Category updated successfully" });
   } catch (error) {
@@ -49,7 +53,10 @@ async function remove(req, res) {
       return res.status(400).json({ message: "Valid category id required" });
     }
 
-    const res = await Category.findOneAndDelete({ _id: categoryId });
+    const resp = await Category.findOneAndDelete({ _id: categoryId });
+
+    if (!resp)
+      return res.status(400).json({ message: "Category deletion failed" });
 
     res.status(200).json({ message: "Category deleted successfully" });
   } catch (error) {

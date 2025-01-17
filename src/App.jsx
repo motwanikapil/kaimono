@@ -17,6 +17,8 @@ import Cancellations from "./components/Cancellations";
 import NotFound from "./pages/NotFound";
 import PaymentDetails from "./pages/PaymentDetails";
 import axios from "axios";
+import AllProducts from "./pages/AllProducts";
+import CompleteProductInfo from "./pages/CompleteProductInfo";
 
 axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -32,6 +34,8 @@ export default function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="cart" element={<Cart />} />
           <Route path="wishlist" element={<Wishlist />} />
+          <Route path="allproducts" element={<AllProducts />} />
+          <Route path="product/:id" element={<CompleteProductInfo />} />
           <Route path="account" element={<Account />}>
             <Route index element={<Profile />} />
             <Route path="addressbook" element={<AddressBook />} />
