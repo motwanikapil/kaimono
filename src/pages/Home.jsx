@@ -5,21 +5,14 @@ import BestSellingProducts from "../components/BestSellingProducts";
 import ExploreOurProducts from "../components/ExploreOurProducts";
 import Banner from "../components/Banner";
 import Services from "../components/Services";
-import { ArrowUp } from "lucide-react";
-import { useRef } from "react";
 import Slide from "../components/Slide";
+import { useScrollToTop } from "../hooks/useScrollToTop";
+import { ArrowUp } from "lucide-react";
 
 export default function Home() {
-  const scrollToTop = useRef(null);
-  function scrollTop() {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-  }
+  const [scrollToTopRef, scrollToTop] = useScrollToTop();
   return (
-    <main className="flex flex-col gap-10" ref={scrollToTop}>
+    <main className="flex flex-col gap-10" ref={scrollToTopRef}>
       <Slide>
         <HomepageCarousel />
       </Slide>
@@ -42,8 +35,8 @@ export default function Home() {
         <Services />
       </Slide>
       <button
-        onClick={scrollTop}
-        className="max-w-fit rounded-full border-2 border-black bg-gray-200 p-2"
+        onClick={scrollToTop}
+        className="fixed bottom-4 right-4 max-w-fit rounded-full border-2 border-black bg-gray-200 p-2 hover:bg-gray-400"
       >
         <ArrowUp />
       </button>

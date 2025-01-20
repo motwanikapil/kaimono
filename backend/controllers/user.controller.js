@@ -40,6 +40,26 @@ async function read(req, res) {
   } catch (error) {}
 }
 
+async function readOne(req, res) {
+  try {
+    console.log(req.session);
+
+    const { id: _id } = req.params;
+
+    if (!_id) return res.status(400).json({ message: "Invalid id" });
+
+    const user = await User.findOne({ _id });
+
+    if (!user) {
+      return res.status(404).json({ message: "user not found" });
+    }
+
+    res.status(200).json({ message: user });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function login(req, res) {
   try {
     const { email, password } = req.body;
@@ -104,7 +124,20 @@ async function update(req, res) {
       return res.status(404).json({ message: "invalid details" });
     }
 
-    let user = await User.findOneAndUpdate({ _id }, { $set: req.body });
+    let user;
+
+    if (password) {
+      user = await User.findOne({ _id });
+
+      if (user) {
+        const samePassword = user.comparePassword(password);
+        return res
+          .status(400)
+          .json({ message: "Password is same as previous password" });
+      }
+    }
+
+    user = await User.findOneAndUpdate({ _id }, { $set: req.body });
 
     if (!user) return res.status(400).json({ message: "User does not exists" });
 
@@ -138,4 +171,5 @@ module.exports = {
   remove,
   logout,
   read,
+  readOne,
 };

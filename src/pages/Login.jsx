@@ -8,9 +8,11 @@ import Slide from "../components/Slide";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 export default function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { mutate, isPending, isError, error } = useMutation({
     mutationKey: ["signup"],
@@ -22,8 +24,10 @@ export default function Login() {
         name,
       });
     },
-    onSuccess: () => {
+    onSuccess: (res) => {
       toast.success("Login Successful");
+      dispatch({ type: "user/login", payload: res.data.user });
+      localStorage.setItem("user", JSON.stringify(res.data.user));
       navigate(-1);
     },
   });

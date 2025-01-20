@@ -21,6 +21,9 @@ router.route("/logout").get(authController.logout);
 
 router.route("/").get(isAdmin, authController.read);
 
-router.route("/:id").put(isUserLoggedIn, authController.update);
+router
+  .route("/:id")
+  .get(isUserLoggedIn, authController.readOne)
+  .put(isUserLoggedIn, authController.update);
 
 module.exports = router;

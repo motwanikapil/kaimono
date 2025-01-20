@@ -19,6 +19,7 @@ import PaymentDetails from "./pages/PaymentDetails";
 import axios from "axios";
 import AllProducts from "./pages/AllProducts";
 import CompleteProductInfo from "./pages/CompleteProductInfo";
+import ChangePassword from "./components/ChangePassword";
 
 axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -42,6 +43,7 @@ export default function App() {
             <Route path="paymentoptions" element={<PaymentOptions />} />
             <Route path="returns" element={<Returns />} />
             <Route path="cancellations" element={<Cancellations />} />
+            <Route path="changepassword" element={<ChangePassword />} />
           </Route>
           <Route path="cart/checkout" element={<PaymentDetails />} />
           <Route path="*" element={<NotFound />} />

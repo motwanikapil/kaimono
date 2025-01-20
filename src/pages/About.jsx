@@ -2,8 +2,11 @@ import Sales from "../components/Sales";
 import Slide from "../components/Slide";
 import Team from "../components/Team";
 import Services from "../components/Services";
+import { useScrollToTop } from "../hooks/useScrollToTop";
+import { ArrowUp } from "lucide-react";
 
 export default function About() {
+  const [scrollToTopRef, scrollToTop] = useScrollToTop();
   return (
     <main>
       <Slide>
